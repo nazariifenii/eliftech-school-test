@@ -11,7 +11,7 @@
 # Installing
 ```
     To install all dependencies go to folder using command promt and type:
-    $npm install
+    $ npm install
 ```
 # Start
 ```
