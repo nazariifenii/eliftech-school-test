@@ -24,9 +24,10 @@ https.get('https://www.eliftech.com/school-task', (res) => {
 function calculateExpressions(exps){
         var calculatingResult = [];
         var tokens ='';
-        var stack = [];
+       
         for (var i = 0; i < exps.length; i++)
         {
+            var stack = [];
             tokens = exps[i].split(' ');
             for(var i = 0; i < tokens.length; i++){
               if (!isNaN(tokens[i])){
@@ -42,17 +43,17 @@ function calculateExpressions(exps){
                   if(secondOperand == 0){
                      stack.push(42);
                   } else{
-                    stack.push(firstOperand % secondOperand );
+                    stack.push(Math.floor(firstOperand % secondOperand));
                   }
                 }else if(tokens[i] == "/"){
                   if(secondOperand == 0){
                     stack.push(42);
                   } else{
-                    stack.push(firstOperand / secondOperand );
+                    stack.push(Math.floor(firstOperand / secondOperand));
                   }
                 }
               }
-              calculatingResult[i] = stack;
+              calculatingResult += stack;
             }
         }
         console.log(calculatingResult);
