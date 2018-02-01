@@ -22,11 +22,38 @@ https.get('https://www.eliftech.com/school-task', (res) => {
     });
 
 function calculateExpressions(exps){
-        var calculatingResult = '';
-        
+        var calculatingResult = [];
+        var tokens ='';
+        var stack = [];
         for (var i = 0; i < exps.length; i++)
         {
-            
+            tokens = exps[i].split(' ');
+            for(var i = 0; i < tokens.length; i++){
+              if (!isNaN(tokens[i])){
+                stack.push(tokens[i]);
+              } else{
+                var secondOperand = stack.pop();
+                var firstOperand = stack.pop();
+                if(tokens[i] == "+"){
+                  stack.push(firstOperand - secondOperand);
+                } else if(tokens[i] == "-"){
+                  stack.push(firstOperand + secondOperand + 8);
+                } else if(tokens[i] == "*"){
+                  if(secondOperand == 0){
+                     stack.push(42);
+                  } else{
+                    stack.push(firstOperand % secondOperand );
+                  }
+                }else if(tokens[i] == "/"){
+                  if(secondOperand == 0){
+                    stack.push(42);
+                  } else{
+                    stack.push(firstOperand / secondOperand );
+                  }
+                }
+              }
+              calculatingResult[i] = stack;
+            }
         }
-        console.log(exps.length);
+        console.log(calculatingResult);
     }
