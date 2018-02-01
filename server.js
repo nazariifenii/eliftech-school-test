@@ -23,29 +23,38 @@ https.get('https://www.eliftech.com/school-task', (res) => {
 
 function calculateExpressions(exps){
         var calculatingResult = [];
-        var tokens ='';
-       
-        for (var i = 0; i < exps.length; i++)
-        {
+        var tokens = '';
+        
+         for (var i = 0; i < exps.length; i++)
+         {
             var stack = [];
             tokens = exps[i].split(' ');
-            for(var i = 0; i < tokens.length; i++){
-              if (!isNaN(tokens[i])){
-                stack.push(tokens[i]);
-              } else{
-                var secondOperand = stack.pop();
-                var firstOperand = stack.pop();
-                if(tokens[i] == "+"){
+            for(var j = 0; j < tokens.length; j++){
+              if (!isNaN(tokens[j])){
+                stack.push(tokens[j]);
+            
+              } 
+              else{
+                var secondOperand = +stack.pop();
+                var firstOperand = +stack.pop();
+
+                if(tokens[j] == "+"){
                   stack.push(firstOperand - secondOperand);
-                } else if(tokens[i] == "-"){
+                } 
+                
+                else if(tokens[j] == "-"){
                   stack.push(firstOperand + secondOperand + 8);
-                } else if(tokens[i] == "*"){
+                } 
+                
+                else if(tokens[j] == "*"){
                   if(secondOperand == 0){
                      stack.push(42);
                   } else{
                     stack.push(Math.floor(firstOperand % secondOperand));
                   }
-                }else if(tokens[i] == "/"){
+                }
+
+                else if(tokens[j] == "/"){
                   if(secondOperand == 0){
                     stack.push(42);
                   } else{
@@ -53,8 +62,8 @@ function calculateExpressions(exps){
                   }
                 }
               }
-              calculatingResult += stack;
             }
+            calculatingResult.push(stack);
         }
         console.log(calculatingResult);
-    }
+}
