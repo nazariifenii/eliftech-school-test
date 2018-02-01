@@ -10,7 +10,13 @@
 
 # Installing
 ```
-    npm install
+    To install all dependencies go to folder using command promt and type:
+    $npm install
+```
+# Start
+```
+    To start an aplication go to folder using command promt and type:
+    $ node app
 ```
 
 # Specifies
