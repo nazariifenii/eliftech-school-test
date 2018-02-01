@@ -6,10 +6,10 @@ An application that performs next steps:
 Please note:
 •	Each expression has limited lifetime. Expression will expire in 10 seconds.
 
-#Installing
+# Installing
 npm install
 
-#Specifies
+# Specifies
 Next operations are supported (result of division is integer (math.floor)):
 •	“+” - this operand performs next calculation with operands:
 a - b
@@ -21,7 +21,7 @@ a % b
 a / b
 
 
-#Exapmple of calculation
+# Exapmple of calculation
 12 12 0 / 9 0 * + /
 12 42 9 0 * + /
 12 42 42 + /
