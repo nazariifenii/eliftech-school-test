@@ -49,12 +49,12 @@ function calculateExpressions(exps){
             for(var j = 0; j < tokens.length; j++){
 
               //Checking if the token is "number"
-              //Pushing all "numbers" to stack, until get a sign
+              //Pushing all "numbers" to stack, until get an operand
               if (!isNaN(tokens[j])){
                 stack.push(tokens[j]);
               } 
               
-              //When got a sign - polling two last values from stack,
+              //When got an operand - polling two last values from stack,
               //performing calculations depending on type of token,
               //pushing back to stack
               else{
@@ -73,9 +73,10 @@ function calculateExpressions(exps){
                 
                 else if(tokens[j] == "*"){
                   if(secondOperand == 0){
-                     stack.push(42);
+                    stack.push(42);
                   } else{
-                    stack.push(Math.floor(firstOperand % secondOperand));
+                    //Resolving JS modulo bug
+                    stack.push(Math.floor(((firstOperand%secondOperand)+secondOperand)%secondOperand));
                   }
                 }
 
